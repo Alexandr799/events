@@ -4,16 +4,10 @@ namespace App\Listeners;
 
 use App\Events\EventToCacheSave;
 use Illuminate\Support\Facades\Cache;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Carbon\Carbon;
-use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Support\Facades\Log;
 
-class EventToCacheSaveNotification implements ShouldQueue
+class EventToCacheSaveNotification
 {
-
-    // public $queue = 'default';
-
     /**
      * Create the event listener.
      */

@@ -40,7 +40,6 @@ class Event extends Model
     public static function getFromCache(string $id): Event|false
     {
         $event = Cache::get($id, false);
-        if ($event !== false) $event = new static($event);
         return $event;
     }
 }
