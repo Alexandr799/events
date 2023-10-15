@@ -22,11 +22,11 @@ class Event extends Model
     public static function saveToCache(array $values): string
     {
         $id = uniqid();
-        EventToCacheSave::dispatch(new static($values), $id);
+        EventToCacheSave::dispatch(serialize(new static($values)), $id);
         return $id;
     }
 
-    public function toText():string
+    public function toText(): string
     {
         $data = $this->title . ' ' . $this->place . ' ' . $this->date;
         if ($this->period > 0) {

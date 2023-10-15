@@ -19,7 +19,7 @@ class EventToCacheSave implements ShouldQueue
     /**
      * Create a new event instance.
      */
-    public function __construct(public Event $event, public  string $id)
+    public function __construct(public string $event, public  string $id)
     {
         //
     }

@@ -3,10 +3,12 @@
 namespace App\Listeners;
 
 use App\Events\EventToCacheSave;
+use App\Jobs\CacheSaveJob;
+use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Support\Facades\Cache;
 use Carbon\Carbon;
 
-class EventToCacheSaveNotification
+class EventToCacheSaveNotification implements ShouldQueue
 {
     /**
      * Create the event listener.
@@ -22,7 +24,7 @@ class EventToCacheSaveNotification
     public function handle(EventToCacheSave $eventToCacheSave): void
     {
         $id = $eventToCacheSave->id;
-        $event = $eventToCacheSave->event;
+        $event = unserialize($eventToCacheSave->event);
         $eventDate = new Carbon($event->date);
         $currentDate = now();
         $period = $currentDate->diffInDays($eventDate);
